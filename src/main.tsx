@@ -6,6 +6,7 @@ import { articleSelections, channels } from './content';
 import './styles.css';
 import './hero.css';
 import './writing.css';
+import './about.css';
 
 type Detail = { eyebrow: string; title: string; content: ReactNode };
 const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projetos', 'projetos'], ['Bora conversar?', 'colabs']];
@@ -106,7 +107,31 @@ function App() {
         <div className="ceramics-bottom"><p>Uma outra maneira de contar histórias.</p><button className="text-link" onClick={() => channel('Instagram')}>Acompanhe no Instagram <ArrowUpRight size={20} /></button></div><p className="demo-note">Galeria ilustrativa. As fotografias serão substituídas pelas peças e pelo ateliê de Cecilia.</p>
       </section>
 
-      <section className="about-section" id="sobre" aria-labelledby="about-title"><div className="wrap about-grid"><div className="about-art"><span className="eyebrow">MUITAS FORMAS DE SER.</span><div className="handwritten">mulher.<br />jornalista.<br /><span>ceramista.</span></div><Asterisk size={70} strokeWidth={1.3} /><span className="about-signature">cecilia vetchi</span></div><div className="about-copy"><p className="eyebrow">04 / PRAZER, CECILIA</p><h2 id="about-title">A curiosidade<br />é o fio que une.</h2><p>Jornalista e ceramista, Cecilia Vetchi reúne a palavra e o fazer manual em uma trajetória de múltiplos interesses.</p><p>Ao lado de Shell Nascimento, também desenvolve um projeto voltado às mulheres e à sua independência financeira.</p><p className="about-pullquote">Entre histórias, ideias e barro,<br />há sempre algo tomando forma.</p><button className="text-link" onClick={() => setDetail({ eyebrow: 'BIOGRAFIA · TEXTO INICIAL', title: 'Uma trajetória, muitos caminhos.', content: <><p>Cecilia Vetchi é jornalista e ceramista. Seus projetos incluem uma iniciativa com a planejadora Shell Nascimento, voltada às mulheres e à sua independência financeira.</p><p>A biografia completa poderá reunir sua formação, trajetória profissional, publicações e exposições, a partir das informações e fotografias aprovadas por Cecilia.</p><p className="detail-note">Texto inicial baseado nas informações fornecidas. Sem currículo ou realizações presumidas.</p></> })}>Mais sobre mim <ArrowUpRight size={20} /></button></div></div></section>
+      <section className="about-section" id="sobre" aria-labelledby="about-title">
+        <div className="wrap about-grid">
+          <div className="about-art">
+            <p className="eyebrow">MUITAS FORMAS DE SER</p>
+            <div className="handwritten about-roles">mulher,<br />jornalista,<br />escritora,<br />ceramista e<br />comunicadora.</div>
+            <img className="about-photo" src="/images/cecilia-caneca.png" alt="Cecilia Vetchi segurando uma caneca de cerâmica, com um livro equilibrado sobre a cabeça" loading="lazy" width="1023" height="1537" />
+          </div>
+          <div className="about-copy">
+            <p className="eyebrow">PRAZER, CECILIA</p>
+            <h2 id="about-title"><span className="about-highlight">A curiosidade é o fio que une.</span></h2>
+            <p>Desde que me entendo por gente, sou curiosa. Sempre quis saber o porquê de as coisas serem do jeito que são — nunca me conformei com um simples "porque sim". Gosto de ir além do raso, mergulhar fundo nos assuntos e ficar submersa até entender a essência.</p>
+            <button className="text-link" onClick={() => setDetail({
+              eyebrow: 'SOBRE MIM', title: 'Uma trajetória, muitas formas de ser.',
+              content: <>
+                <p>Entender o mundo é fundamental para mim, mas esse processo nunca acontece só de fora para dentro. Sinto a necessidade de me entender profundamente desde muito nova. Por isso, desde que aprendi a escrever, estou sempre rabiscando palavras e carregando um caderno para onde quer que eu vá.</p>
+                <p>Falar, ouvir com atenção e escrever fazem parte de quem sou. Reuni tudo isso na escolha de cursar Jornalismo, uma decisão que ampliou meu repertório e transformou a minha forma de enxergar a sociedade. Aprendi que o recorte que damos a cada assunto é o coração da história que queremos contar.</p>
+                <p>Hoje, trago essa escuta e olhar atento para projetos com propósito. Sou diretora criativa do RECONTAR.LAB, projeto de pesquisa independente em parceria com a planejadora financeira Shel Nascimento (@shellnascimento), no qual investigamos o que significa segurança financeira para as mulheres no Brasil. Sou também coautora do livro-reportagem Vozes do Silêncio (2022) e criadora da newsletter Clube Insano no Substack.</p>
+                <p>Seja em ensaios confessionais, investigações jornalísticas ou projetos criativos, o meu olhar atento está sempre presente.</p>
+                <p className="bio-question">Afinal, que história você quer contar?</p>
+                <a className="text-link" href="#colabs" onClick={() => setDetail(null)}>Vamos conversar.</a>
+              </>,
+            })}>Mais sobre mim <ArrowUpRight size={20} /></button>
+          </div>
+        </div>
+      </section>
 
       <section className="section wrap connections" aria-labelledby="connections-title"><div className="section-top"><div><p className="eyebrow">05 / A CONVERSA CONTINUA</p><h2 id="connections-title">Por outros cantos<span className="lime-period">.</span></h2></div><p className="section-aside">Textos, bastidores, conversas.<br />Escolha seu jeito de acompanhar.</p></div><div className="channels-grid">{[{name:'Substack',icon:BookOpen,text:'Para ler com calma.'},{name:'Instagram',icon:Camera,text:'O cotidiano em imagens.'},{name:'TikTok',icon:Play,text:'Ideias em movimento.'},{name:'YouTube',icon:Video,text:'Histórias em outras telas.'},{name:'Spotify',icon:Headphones,text:'Conversas para levar junto.'}].map(({name,icon:Icon,text}) => <button className="channel-card" key={name} onClick={() => channel(name)}><div><Icon size={24} strokeWidth={1.5}/><ArrowUpRight size={20}/></div><h3>{name}</h3><p>{text}</p></button>)}</div></section>
 
