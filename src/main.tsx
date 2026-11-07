@@ -111,7 +111,6 @@ function App() {
         <div className="wrap about-grid">
           <div className="about-art">
             <p className="eyebrow">MUITAS FORMAS DE SER</p>
-            <div className="handwritten about-roles">mulher,<br />jornalista,<br />escritora,<br />ceramista e<br />comunicadora.</div>
             <img className="about-photo" src="/images/cecilia-caneca.png" alt="Cecilia Vetchi segurando uma caneca de cerâmica, com um livro equilibrado sobre a cabeça" loading="lazy" width="1023" height="1537" />
           </div>
           <div className="about-copy">
