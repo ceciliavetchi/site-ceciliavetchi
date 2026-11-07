@@ -1,0 +1,48 @@
+:root{
+  /* Papéis semânticos inspirados no Material Design 3, com identidade editorial. */
+  --surface:#f7f6ea;
+  --surface-dim:#eae8db;
+  --ink:#191919;
+  --ink-soft:#35352e;
+  --ink-muted:#636258;
+  --accent:#d6ff00;
+  --accent-hover:#c6ee00;
+  --on-dark-muted:#c3c2b8;
+  --white:#ffffff;
+  --line:#cecdc1;
+  --focus:#657900;
+  --scrim:#191919aa;
+  --font-body:'DM Sans',Arial,sans-serif;
+  --font-marker:'Caveat Brush',cursive;
+  --text-hero:112px;
+  --text-heading:48px;
+  --text-project:44px;
+  --text-collab:64px;
+  --text-club:114px;
+  --text-card:28px;
+  --text-piece:26px;
+  --text-logo:31px;
+  --text-note:34px;
+  --text-lead:18px;
+  --text-body:16px;
+  --text-small:14px;
+  --text-caption:12px;
+  --text-eyebrow:11px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:24px;
+  --space-6:32px;
+  --space-7:40px;
+  --space-8:48px;
+  --section-gap:96px;
+  --page-gutter:56px;
+  --container:1200px;
+  --radius-button:2px;
+  --radius-full:999px;
+  --elevation-dialog:0 24px 80px #0003;
+  --motion-fast:180ms ease;
+  --motion-slow:400ms ease;
+  /* Breakpoints de composição: compacto 760px; médio 1100px; amplo 1500px. */
+}
