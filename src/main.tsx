@@ -2,16 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ArrowUpRight, ArrowDown, Asterisk, Menu, X, Plus, Headphones, Camera, Video, Play, BookOpen, Check } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { articles, channels } from './content';
+import { articleSelections, channels } from './content';
 import './styles.css';
 import './hero.css';
+import './writing.css';
 
 type Detail = { eyebrow: string; title: string; content: ReactNode };
 const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projetos', 'projetos'], ['Bora conversar?', 'colabs']];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [filter, setFilter] = useState('Todos');
+  const [filter, setFilter] = useState<keyof typeof articleSelections>('Todos');
   const [detail, setDetail] = useState<Detail | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
@@ -71,27 +72,30 @@ function App() {
         </div>
       </section>
 
-      <div className="manifesto-strip" aria-label="Palavras que atravessam este espaço"><div className="wrap strip-inner"><span>JORNALISMO</span><Asterisk /><span>FEITO À MÃO</span><Asterisk /><span>AUTONOMIA FEMININA</span><Asterisk /><span>CONVERSAS QUE IMPORTAM</span><Asterisk /></div></div>
+      <div className="manifesto-strip" aria-label="Comunicação, narrativa e criatividade">
+        <div className="marquee-track">{[0, 1].map(copy => <div className="marquee-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+          {['COMUNICAÇÃO', 'NARRATIVA', 'CRIATIVIDADE'].map(word => <span className="marquee-item" key={word}>{word}<Asterisk aria-hidden="true" /></span>)}
+        </div>)}</div>
+      </div>
 
-      <section className="section wrap writing" id="escrita" aria-labelledby="writing-title">
-        <div className="section-top"><div><p className="eyebrow">01 / PALAVRAS QUE FICAM</p><h2 id="writing-title">Daqui, eu escrevo<span className="lime-period">.</span></h2></div><button className="text-link" onClick={() => channel('Substack')}>Meu Substack <ArrowUpRight size={20} /></button></div>
-        <div className="writing-toolbar"><p>Um olhar atento para o cotidiano, as mulheres e o que nos move.</p><div className="filters" aria-label="Filtrar artigos">{['Todos', 'Mulheres', 'Cotidiano'].map(label => <button key={label} aria-pressed={filter === label} className={filter === label ? 'filter active' : 'filter'} onClick={() => setFilter(label)}>{label}</button>)}</div></div>
+      <section className="section wrap writing" id="clube-insano" aria-labelledby="writing-title">
+        <div className="section-top"><div><p className="eyebrow">01/ escrita</p><h2 id="writing-title">clube insano<span className="lime-period">.</span></h2></div><a className="text-link" href={channels.Substack!} target="_blank" rel="noopener noreferrer">Meu Substack <ArrowUpRight size={20} /></a></div>
+        <div className="writing-toolbar"><p>minha newsletter no substack onde compartilho meu jeito de ver o mundo.</p><div className="filters" aria-label="Filtrar artigos">{(Object.keys(articleSelections) as (keyof typeof articleSelections)[]).map(label => <button key={label} aria-pressed={filter === label} className={filter === label ? 'filter active' : 'filter'} onClick={() => setFilter(label)}>{label}</button>)}</div></div>
         <div className="articles-grid" aria-live="polite">
-          {articles.filter(article => filter === 'Todos' || article.category === filter).map(article => <article className="article" key={article.id}>
-            <button className="article-open" onClick={() => setDetail({ eyebrow: `${article.format} · CONTEÚDO DEMONSTRATIVO`, title: article.title, content: <>{article.paragraphs.map(p => <p key={p}>{p}</p>)}<button className="button button-dark" onClick={() => channel('Substack')}>Conhecer o Substack <ArrowUpRight size={17} /></button></> })} aria-label={`Abrir prévia: ${article.title}`}>
-              <div className={`article-cover ${article.visual}`}>
-                {article.visual === 'photo' ? <img src="/images/pottery-process.jpg" alt="Mãos trabalhando o barro, imagem ilustrativa" loading="lazy" /> : <><span className="cover-label">{article.visual === 'acid' ? 'UM CONVITE À AUTONOMIA' : 'ANOTAÇÕES SOBRE EXISTIR'}</span><span className="handwritten cover-writing">{article.cover}</span><Asterisk className="cover-star" strokeWidth={1.4} /></>}
-                <span className="article-arrow"><ArrowUpRight size={22} /></span>
+          {articleSelections[filter].map((article, index) => <article className="article" key={article.id} data-category={filter.toLowerCase()}>
+            <a className="article-open" href={article.href} target="_blank" rel="noopener noreferrer">
+              <div className={`article-cover ${index % 2 === 0 ? 'paper' : 'acid'}`}>
+                <span className="cover-label">{article.format}</span><span className="handwritten cover-writing">{article.cover}</span><Asterisk className="cover-star" strokeWidth={1.4} aria-hidden="true" />
+                <span className="article-arrow"><ArrowUpRight size={22} aria-hidden="true" /></span>
               </div>
               <div className="article-meta"><span>{article.format}</span><span>{article.time}</span></div><h3>{article.title}</h3><p>{article.description}</p>
-            </button>
+            </a>
           </article>)}
         </div>
-        <p className="demo-note">Propostas de pautas para visualizar o layout. Os artigos originais entrarão aqui.</p>
       </section>
 
       <section className="project-section" id="projetos" aria-labelledby="project-title">
-        <div className="wrap project-grid"><div className="project-poster" id="clube-insano"><span className="eyebrow">CECILIA VETCHI + SHELL NASCIMENTO</span><div className="handwritten club-title">clube<br /><span>insano</span></div><div className="poster-bottom"><span>MULHERES &<br />INDEPENDÊNCIA FINANCEIRA</span><Asterisk size={66} strokeWidth={1.2} /></div></div>
+        <div className="wrap project-grid"><div className="project-poster"><span className="eyebrow">CECILIA VETCHI + SHELL NASCIMENTO</span><div className="handwritten club-title">clube<br /><span>insano</span></div><div className="poster-bottom"><span>MULHERES &<br />INDEPENDÊNCIA FINANCEIRA</span><Asterisk size={66} strokeWidth={1.2} /></div></div>
           <div className="project-copy"><p className="eyebrow">02 / JUNTAS, MAIS LONGE</p><h2 id="project-title">A liberdade também<br />passa pelo dinheiro.</h2><p>Um projeto de Cecilia Vetchi com a planejadora Shell Nascimento, dedicado às mulheres e à construção da sua independência financeira.</p><p>Conversas que aproximam informação, autonomia e a possibilidade de escolher o próprio caminho.</p><button className="button button-lime" onClick={() => setDetail({ eyebrow: 'CECILIA VETCHI + SHELL NASCIMENTO', title: 'Mulheres, dinheiro e autonomia.', content: <><p>Um projeto que reúne o olhar do jornalismo de Cecilia e o planejamento de Shell Nascimento para conversar sobre mulheres e independência financeira.</p><p>Neste espaço poderão entrar os conteúdos, encontros e episódios oficiais do projeto.</p><p className="detail-note">“Clube Insano” é uma aplicação visual sugerida a partir do anexo. Nome, identidade final, formatos e links ainda precisam ser confirmados.</p></> })}>Conheça o projeto <ArrowUpRight size={18} /></button><span className="project-footnote">Identidade sugerida a partir da referência enviada.</span></div></div>
       </section>
 
