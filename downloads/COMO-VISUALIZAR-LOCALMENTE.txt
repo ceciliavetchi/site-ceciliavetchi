@@ -1,0 +1,36 @@
+COMO VISUALIZAR SEM PUBLICAR
+
+Este pacote contém o site mais recente, o código-fonte e as instruções de configuração.
+
+OPÇÃO RECOMENDADA: VS CODE + LIVE SERVER
+1. Instale o Visual Studio Code: https://code.visualstudio.com/
+2. No VS Code, abra Extensões (Ctrl+Shift+X), procure Live Server (autor Ritwick Dey) e instale.
+3. Extraia este ZIP. No VS Code, use Arquivo > Abrir Pasta e escolha especificamente a pasta dist que está dentro de site-cecilia. Não abra a pasta principal para este método.
+4. Na lista de arquivos, clique com o botão direito em index.html e escolha Open with Live Server.
+5. O navegador abrirá uma URL local, normalmente http://127.0.0.1:5500. O site não está publicado na internet.
+
+ALTERNATIVA COM PYTHON INSTALADO
+Abra um terminal na pasta site-cecilia e execute:
+python -m http.server 8000 --bind 127.0.0.1 --directory dist
+Depois abra http://127.0.0.1:8000. No Windows, você pode usar py no lugar de python.
+
+O QUE TESTAR
+- Menu superior, botão Entre, fique à vontade! e links de seção.
+- Filtros Todos, Narrativas e Criatividade e links dos artigos.
+- Projetos: link do livro e assinatura do Substack.
+- Mais sobre mim: abrir, fechar por X e Escape e ler a biografia.
+- Formulário: abrir, preencher os campos e verificar os campos obrigatórios.
+- Rodapé e links sociais.
+- Para simular celular no Chrome: F12, depois Ctrl+Shift+M.
+
+LIMITES DESTA PRÉVIA
+Não abra index.html diretamente com duplo clique: o site precisa do servidor local para carregar corretamente.
+O envio real do formulário usa Netlify Forms e não funciona no servidor local. Uma mensagem de erro ao enviar localmente não indica problema nos campos ou no layout. Não é um teste de entrega de e-mail.
+Links externos abrem os sites reais e precisam de internet. O Spotify ainda é um espaço reservado, pois seu endereço não foi fornecido.
+A fonte ES Build enviada é uma versão TRIAL sem os caracteres ç e ã; o título usa acentos compostos em CSS.
+O site e os arquivos de configuração permanecem preparados para Netlify. Nenhuma migração para Cloudflare/Formspree foi feita.
+
+ESTRUTURA
+- dist: site pronto para visualizar.
+- src, public e demais arquivos: código-fonte editável.
+- CONFIGURAR-FORMULARIO.md: instruções já preparadas para uso futuro no Netlify.
