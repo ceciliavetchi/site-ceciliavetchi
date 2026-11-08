@@ -47,7 +47,7 @@ const projects = [
 
 export function Projects() {
   return <section className="projects-section section wrap" id="projetos" aria-labelledby="projects-title">
-    <header className="projects-heading">
+    <header className="projects-heading"><p className="eyebrow">02 / PROJETOS</p>
       <h2 id="projects-title">PROJETOS<span className="lime-period">.</span></h2>
       <p>pesquisa, investigação e narrativas autorais para transformar dados e reflexões em histórias que conectam.</p>
       <p className="projects-scroll">ROLE PARA EXPLORAR <ArrowDown size={18} aria-hidden="true" /></p>

@@ -3,7 +3,6 @@ export const channels: Record<string, string | null> = {
   Substack: 'https://ceciliasantos.substack.com/',
   Instagram: 'https://www.instagram.com/cecilia.vetchi/',
   TikTok: 'https://www.tiktok.com/@cecilsv',
-  YouTube: 'https://www.youtube.com/@cecilia.vetchi',
   Spotify: null,
 };
 

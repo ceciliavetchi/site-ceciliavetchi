@@ -27,3 +27,9 @@ Abertura conforme a proposta aprovada: título reto, três sublinhados verdes, r
 A fonte ES Build TRIAL Bold foi fornecida pela usuária para o teste visual. O arquivo não inclui ç e ã; os acentos do título são compostos visualmente em CSS. Para publicação comercial, usar a fonte com a licença e os caracteres apropriados. DM Sans e Caveat Brush são servidas localmente, com suas licenças OFL em `public/fonts`.
 
 A foto e o símbolo originais enviados ao GitHub estão incorporados em `public/images`.
+
+## Contato pelo Netlify Forms
+
+O botão Vamos conversar abre o formulário com nome, e-mail, WhatsApp e mensagem. A declaração estática em `index.html` permite a detecção do formulário React no deploy. O envio usa POST codificado para o Netlify; não há credenciais no código.
+
+Após publicar, habilite a detecção de formulários no painel do site, se necessário, e configure as notificações do formulário `contato` para `cecilia.vetchi@gmail.com`. Consulte `downloads/CONFIGURAR-FORMULARIO.md`. A entrega real de e-mails depende dessa configuração no Netlify; os testes locais usam respostas simuladas.

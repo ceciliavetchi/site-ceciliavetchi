@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowUpRight, ArrowDown, Asterisk, Menu, X, Headphones, Camera, Video, Play, BookOpen, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Asterisk, Menu, X, Headphones, Camera, Play, BookOpen, Check } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { articleSelections, channels } from './content';
 import './styles.css';
 import './hero.css';
 import './writing.css';
 import './about.css';
+import './refinements.css';
+import { ContactForm } from './contact-form';
 import { Projects } from './projects';
 
-type Detail = { eyebrow: string; title: string; content: ReactNode };
-const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projetos', 'projetos'], ['Bora conversar?', 'colabs']];
+type Detail = { kind?: 'contact'; eyebrow: string; title: string; content: ReactNode };
+const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projetos', 'projetos']];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,7 +45,8 @@ function App() {
   }
 
   function contact() {
-    setDetail({ eyebrow: 'COLABORAÇÕES', title: 'Boas ideias começam com uma conversa.', content: <><p>Jornalismo, conteúdo, cerâmica e projetos sobre mulheres e autonomia: um espaço aberto a encontros e parcerias.</p><p>O contato profissional será incluído após a confirmação de Cecilia.</p><p className="detail-note">Prévia de layout · Nenhuma mensagem é enviada por este protótipo.</p></> });
+    setMenuOpen(false);
+    setDetail({ kind: 'contact', eyebrow: 'BORA CONVERSAR?', title: 'Que história vamos contar?', content: <div className="contact-grid"><div className="contact-info"><a href="mailto:cecilia.vetchi@gmail.com">cecilia.vetchi@gmail.com</a></div><ContactForm /></div> });
   }
 
   return <>
@@ -53,6 +56,7 @@ function App() {
       <nav id="mobile-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Navegação principal">
         {nav.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
       </nav>
+      <button className="contact-nav header-contact" onClick={contact}>Vamos conversar <ArrowUpRight size={16} /></button>
       <button className="menu-toggle" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
     </header>
 
@@ -76,12 +80,12 @@ function App() {
 
       <div className="manifesto-strip" aria-label="Comunicação, narrativa e criatividade">
         <div className="marquee-track">{[0, 1].map(copy => <div className="marquee-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
-          {['COMUNICAÇÃO', 'NARRATIVA', 'CRIATIVIDADE'].map(word => <span className="marquee-item" key={word}>{word}<Asterisk aria-hidden="true" /></span>)}
+          {Array.from({length: 3}, () => ['COMUNICAÇÃO', 'NARRATIVA', 'CRIATIVIDADE']).flat().map((word, index) => <span className="marquee-item" key={index}>{word}<Asterisk aria-hidden="true" /></span>)}
         </div>)}</div>
       </div>
 
       <section className="section wrap writing" id="clube-insano" aria-labelledby="writing-title">
-        <div className="section-top"><div><p className="eyebrow">01/ escrita</p><h2 id="writing-title">clube insano<span className="lime-period">.</span></h2></div><a className="text-link" href={channels.Substack!} target="_blank" rel="noopener noreferrer">Meu Substack <ArrowUpRight size={20} /></a></div>
+        <div className="section-top"><div><p className="eyebrow">01 / ESCRITA</p><h2 id="writing-title">CLUBE INSANO<span className="lime-period">.</span></h2></div><a className="text-link" href={channels.Substack!} target="_blank" rel="noopener noreferrer">Meu Substack <ArrowUpRight size={20} /></a></div>
         <div className="writing-toolbar"><p>minha newsletter no substack onde compartilho meu jeito de ver o mundo.</p><div className="filters" aria-label="Filtrar artigos">{(Object.keys(articleSelections) as (keyof typeof articleSelections)[]).map(label => <button key={label} aria-pressed={filter === label} className={filter === label ? 'filter active' : 'filter'} onClick={() => setFilter(label)}>{label}</button>)}</div></div>
         <div className="articles-grid" aria-live="polite">
           {articleSelections[filter].map((article, index) => <article className="article" key={article.id} data-category={filter.toLowerCase()}>
@@ -106,7 +110,7 @@ function App() {
             <p className="handwritten about-photo-note">muitas formas de ser</p>
           </div>
           <div className="about-copy">
-            <p className="eyebrow">PRAZER, CECILIA :)</p>
+            <p className="eyebrow">03 / PRAZER, CECILIA :)</p>
             <h2 id="about-title"><span className="about-highlight">A curiosidade é o fio que une.</span></h2>
             <p>Desde que me entendo por gente, sou curiosa. Sempre quis saber o porquê de as coisas serem do jeito que são, nunca me conformei com um simples "porque sim". Gosto de ir além do raso, mergulhar fundo nos assuntos e ficar submersa até entender a essência.</p>
             <button className="text-link" onClick={() => setDetail({
@@ -124,15 +128,15 @@ function App() {
         </div>
       </section>
 
-      <section className="section wrap connections" aria-labelledby="connections-title"><div className="section-top"><div><p className="eyebrow">05 / A CONVERSA CONTINUA</p><h2 id="connections-title">Por outros cantos<span className="lime-period">.</span></h2></div><p className="section-aside">Textos, bastidores, conversas.<br />Escolha seu jeito de acompanhar.</p></div><div className="channels-grid">{[{name:'Substack',icon:BookOpen,text:'Para ler com calma.'},{name:'Instagram',icon:Camera,text:'O cotidiano em imagens.'},{name:'TikTok',icon:Play,text:'Ideias em movimento.'},{name:'YouTube',icon:Video,text:'Histórias em outras telas.'},{name:'Spotify',icon:Headphones,text:'Conversas para levar junto.'}].map(({name,icon:Icon,text}) => <button className="channel-card" key={name} onClick={() => channel(name)}><div><Icon size={24} strokeWidth={1.5}/><ArrowUpRight size={20}/></div><h3>{name}</h3><p>{text}</p></button>)}</div></section>
+      <section className="section wrap connections" aria-labelledby="connections-title"><div className="section-top"><div><p className="eyebrow">04 / A CONVERSA CONTINUA</p><h2 id="connections-title">Por outros cantos<span className="lime-period">.</span></h2></div><p className="section-aside">Textos, bastidores, conversas.<br />Escolha seu jeito de acompanhar.</p></div><div className="channels-grid">{[{name:'Substack',icon:BookOpen,text:'Para ler com calma.'},{name:'Instagram',icon:Camera,text:'O cotidiano em imagens.'},{name:'TikTok',icon:Play,text:'Ideias em movimento.'},{name:'Spotify',icon:Headphones,text:'Conversas para levar junto.'}].map(({name,icon:Icon,text}) => <button className="channel-card" key={name} onClick={() => channel(name)}><div><Icon size={24} strokeWidth={1.5}/><ArrowUpRight size={20}/></div><h3>{name}</h3><p>{text}</p></button>)}</div></section>
 
-      <section className="collab-section wrap" id="colabs" aria-labelledby="collab-title"><div><p className="eyebrow">ENCONTROS QUE VIRAM POSSIBILIDADES</p><h2 id="collab-title">Vamos criar<br /><span className="handwritten">algo juntas?</span></h2><p>Histórias, conteúdos e projetos que fazem sentido.<br />O próximo encontro pode começar aqui.</p></div><button className="collab-cta" onClick={contact} aria-label="Conversar sobre uma colaboração"><ArrowUpRight strokeWidth={1} /></button></section>
+      <section className="collab-section wrap" id="colabs" aria-labelledby="collab-title"><div><p className="eyebrow">05 / VAMOS CONVERSAR</p><h2 id="collab-title">Vamos criar<br /><span className="handwritten">algo juntas?</span></h2><p>Histórias, conteúdos e projetos que fazem sentido.<br />O próximo encontro pode começar aqui.</p></div><button className="collab-cta" onClick={contact} aria-label="Conversar sobre uma colaboração"><ArrowUpRight strokeWidth={1} /></button></section>
     </main>
 
-    <footer className="wrap site-footer"><div><a className="wordmark" href="#">cecilia vetchi<span>.</span></a><p>Palavras, barro & liberdade.</p></div><div className="footer-links">{Object.keys(channels).map(name => <button key={name} onClick={() => channel(name)}>{name} <ArrowUpRight size={13}/></button>)}</div><div className="footer-bottom"><span>© {new Date().getFullYear()} Cecilia Vetchi</span><div className="creator-credit"><span>Criado por</span><span className="creator-brand">maju ros<span aria-hidden="true">.</span></span></div><a href="#">Voltar ao início ↑</a></div></footer>
+    <footer className="wrap site-footer"><div><a className="wordmark" href="#">cecilia vetchi<span>.</span></a><p>conto historias pra entender o mundo</p></div><div className="footer-links">{Object.keys(channels).map(name => <button key={name} onClick={() => channel(name)}>{name} <ArrowUpRight size={13}/></button>)}</div><div className="footer-bottom"><span>© {new Date().getFullYear()} Cecilia Vetchi</span><div className="creator-credit"><span>Criado por</span><span className="creator-brand">maju ros<span aria-hidden="true">.</span></span></div><a href="#">Voltar ao início ↑</a></div></footer>
     <div className="preview-badge"><Check size={13}/><span>Prévia de design · conteúdo ilustrativo</span></div>
 
-    <dialog ref={dialog} className="detail-dialog" onCancel={() => setDetail(null)} onClick={event => { if(event.target === event.currentTarget) setDetail(null); }} aria-labelledby="detail-title"><div className="detail-inner"><button ref={closeButton} className="dialog-close" onClick={() => setDetail(null)} aria-label="Fechar"><X /></button>{detail && <><p className="eyebrow">{detail.eyebrow}</p><h2 id="detail-title">{detail.title}</h2><div className="detail-body">{detail.content}</div></>}</div></dialog>
+    <dialog ref={dialog} className={detail?.kind === 'contact' ? 'detail-dialog contact-dialog' : 'detail-dialog'} onCancel={() => setDetail(null)} onClick={event => { if(event.target === event.currentTarget) setDetail(null); }} aria-labelledby="detail-title"><div className="detail-inner"><button ref={closeButton} className="dialog-close" onClick={() => setDetail(null)} aria-label="Fechar"><X /></button>{detail && <><p className="eyebrow">{detail.eyebrow}</p><h2 id="detail-title">{detail.title}</h2><div className="detail-body">{detail.content}</div></>}</div></dialog>
   </>;
 }
 
