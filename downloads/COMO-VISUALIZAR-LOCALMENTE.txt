@@ -19,13 +19,13 @@ O QUE TESTAR
 - Filtros Todos, Narrativas e Criatividade e links dos artigos.
 - Projetos: link do livro e assinatura do Substack.
 - Mais sobre mim: abrir, fechar por X e Escape e ler a biografia.
-- Contato: os três links Vamos conversar apontam para cecilia.vetchi@gmail.com.
+- Contato: os três botões Vamos conversar abrem uma janela com e-mail e Instagram Direct.
 - Rodapé e links sociais.
 - Para simular celular no Chrome: F12, depois Ctrl+Shift+M.
 
 LIMITES DESTA PRÉVIA
 Não abra index.html diretamente com duplo clique: o site precisa do servidor local.
-Os links Vamos conversar abrem seu aplicativo de e-mail com o destinatário cecilia.vetchi@gmail.com. Você escreve e envia a mensagem pelo seu próprio aplicativo. Isso também funciona em uma prévia local se houver um aplicativo de e-mail configurado.
+Os botões Vamos conversar abrem a janela de contato. Nela, o link de e-mail abre seu aplicativo para escrever para cecilia.vetchi@gmail.com; o link do direct abre https://ig.me/m/cecilia.vetchi e pode pedir login no Instagram. Isso também funciona em uma prévia local se houver um aplicativo de e-mail configurado.
 Não há formulário ou dependência do Netlify Forms. Nenhum e-mail é enviado automaticamente pelo site.
 Links externos precisam de internet; os dois botões do Spotify já usam o endereço oficial fornecido.
 

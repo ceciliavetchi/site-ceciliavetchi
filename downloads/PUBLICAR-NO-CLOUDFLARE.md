@@ -8,4 +8,4 @@ O site é estático, sem formulário: não depende de Netlify ou de um serviço 
 4. Escolha o nome do projeto e confirme o deploy. O Pages fornecerá um endereço pages.dev; não é necessário comprar domínio.
 5. Confira os menus, as imagens, os links dos artigos e os links de contato. Para atualizar depois, envie um novo dist para este mesmo projeto Pages.
 
-A interface da plataforma pode mudar; procure a opção Pages com upload direto. Os links de contato abrem o aplicativo de e-mail do visitante para escrever para cecilia.vetchi@gmail.com, sem coleta ou envio de formulário pelo site.
+A interface da plataforma pode mudar; procure a opção Pages com upload direto. Os botões de contato abrem uma janela com links para e-mail e Instagram Direct, sem coleta ou envio de formulário pelo site.

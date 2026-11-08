@@ -30,7 +30,7 @@ A foto e o símbolo originais enviados ao GitHub estão incorporados em `public/
 
 ## Contato por e-mail
 
-Os links Vamos conversar, na navegação, na biografia e no bloco final, abrem `mailto:cecilia.vetchi@gmail.com`. O visitante usa seu aplicativo de e-mail para enviar a mensagem. Não há formulário ou serviço de envio no site.
+Os botões Vamos conversar, na navegação, na biografia e no bloco final, abrem a mesma janela de contato. Ela oferece o e-mail `cecilia.vetchi@gmail.com` e o Instagram Direct `https://ig.me/m/cecilia.vetchi`. O visitante escolhe o canal. Não há formulário ou serviço de envio no site.
 
 ## Publicação estática gratuita
 
