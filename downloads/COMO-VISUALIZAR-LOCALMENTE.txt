@@ -26,7 +26,7 @@ O QUE TESTAR
 LIMITES DESTA PRÉVIA
 Não abra index.html diretamente com duplo clique: o site precisa do servidor local para carregar corretamente.
 O envio real do formulário usa Netlify Forms e não funciona no servidor local. Uma mensagem de erro ao enviar localmente não indica problema nos campos ou no layout. Não é um teste de entrega de e-mail.
-Links externos abrem os sites reais e precisam de internet. O Spotify ainda é um espaço reservado, pois seu endereço não foi fornecido.
+Links externos abrem os sites reais e precisam de internet.
 A fonte ES Build enviada é uma versão TRIAL sem os caracteres ç e ã; o título usa acentos compostos em CSS.
 O site e os arquivos de configuração permanecem preparados para Netlify. Nenhuma migração para Cloudflare/Formspree foi feita.
 
