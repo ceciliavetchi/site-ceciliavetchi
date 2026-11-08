@@ -101,7 +101,7 @@ function App() {
       <section className="about-section" id="sobre" aria-labelledby="about-title">
         <div className="wrap about-grid">
           <div className="about-art">
-            
+
             <img className="about-photo" src="/images/cecilia-caneca.png" alt="Cecilia Vetchi segurando uma caneca de cerâmica, com um livro equilibrado sobre a cabeça" loading="lazy" width="1023" height="1537" />
             <p className="handwritten about-photo-note">muitas formas de ser</p>
           </div>
