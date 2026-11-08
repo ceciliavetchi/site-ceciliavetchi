@@ -1,0 +1,26 @@
+.projects-heading { padding-bottom: 30px; }
+.projects-heading h2 { font-weight: 700; font-size: clamp(42px, 5.5vw, 72px); margin-bottom: 18px; }
+.projects-heading > p:not(.projects-scroll) { max-width: 760px; font-size: 21px; line-height: 1.5; }
+.projects-scroll { display: flex; align-items: center; gap: 14px; margin-top: 32px; font-size: 12px; letter-spacing: .12em; font-weight: 650; }
+.project-panel { display: grid; grid-template-columns: .8fr 1.2fr; gap: 42px; align-items: start; border-top: 1px solid var(--line); padding-block: 40px; }
+.project-media { background: var(--surface-dim); }
+.project-media img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.project-panel-vozes .project-media { padding: 0; }
+.project-panel-vozes .project-media img { object-fit: contain; aspect-ratio: 3 / 2; }
+.project-panel-newsletter .project-media { background: #000; padding: 30px 18px; }
+.project-panel-newsletter .project-media img { object-fit: contain; aspect-ratio: 1.1; }
+.project-details > .eyebrow { margin-bottom: 18px; line-height: 1.7; }
+.project-details > .eyebrow > span { background: var(--accent); padding: 4px 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.project-details h3 { font-size: clamp(26px, 2.7vw, 36px); line-height: 1.15; letter-spacing: -.035em; margin-bottom: 14px; }
+.project-partnership { font-size: 16px; line-height: 1.6; margin-bottom: 6px; }
+.project-role { font-size: 17px; font-weight: 650; line-height: 1.5; margin-bottom: 24px; }
+.project-description { font-size: 17px; line-height: 1.75; margin-bottom: 20px; }
+.project-details .text-link { font-weight: 600; font-size: 17px; }
+@media (max-width: 1100px) { .project-panel { gap: 28px; } .project-description { font-size: 16px; } }
+@media (max-width: 760px) {
+  .project-panel { grid-template-columns: 1fr; padding-block: 32px; gap: 28px; }
+  .projects-heading > p:not(.projects-scroll) { font-size: 18px; }
+  .project-media { width: 100%; max-width: 480px; }
+  .project-details h3 { font-size: 30px; overflow-wrap: anywhere; }
+  .project-details > .eyebrow { font-size: 10px; }
+}

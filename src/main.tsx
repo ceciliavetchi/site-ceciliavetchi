@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowUpRight, ArrowDown, Asterisk, Menu, X, Plus, Headphones, Camera, Video, Play, BookOpen, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Asterisk, Menu, X, Headphones, Camera, Video, Play, BookOpen, Check } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { articleSelections, channels } from './content';
 import './styles.css';
 import './hero.css';
 import './writing.css';
 import './about.css';
+import { Projects } from './projects';
 
 type Detail = { eyebrow: string; title: string; content: ReactNode };
 const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projetos', 'projetos'], ['Bora conversar?', 'colabs']];
@@ -95,35 +96,26 @@ function App() {
         </div>
       </section>
 
-      <section className="project-section" id="projetos" aria-labelledby="project-title">
-        <div className="wrap project-grid"><div className="project-poster"><span className="eyebrow">CECILIA VETCHI + SHELL NASCIMENTO</span><div className="handwritten club-title">clube<br /><span>insano</span></div><div className="poster-bottom"><span>MULHERES &<br />INDEPENDÊNCIA FINANCEIRA</span><Asterisk size={66} strokeWidth={1.2} /></div></div>
-          <div className="project-copy"><p className="eyebrow">02 / JUNTAS, MAIS LONGE</p><h2 id="project-title">A liberdade também<br />passa pelo dinheiro.</h2><p>Um projeto de Cecilia Vetchi com a planejadora Shell Nascimento, dedicado às mulheres e à construção da sua independência financeira.</p><p>Conversas que aproximam informação, autonomia e a possibilidade de escolher o próprio caminho.</p><button className="button button-lime" onClick={() => setDetail({ eyebrow: 'CECILIA VETCHI + SHELL NASCIMENTO', title: 'Mulheres, dinheiro e autonomia.', content: <><p>Um projeto que reúne o olhar do jornalismo de Cecilia e o planejamento de Shell Nascimento para conversar sobre mulheres e independência financeira.</p><p>Neste espaço poderão entrar os conteúdos, encontros e episódios oficiais do projeto.</p><p className="detail-note">“Clube Insano” é uma aplicação visual sugerida a partir do anexo. Nome, identidade final, formatos e links ainda precisam ser confirmados.</p></> })}>Conheça o projeto <ArrowUpRight size={18} /></button><span className="project-footnote">Identidade sugerida a partir da referência enviada.</span></div></div>
-      </section>
-
-      <section className="section wrap ceramics" id="ceramica" aria-labelledby="ceramics-title">
-        <div className="section-top"><div><p className="eyebrow">03 / PENSAR COM AS MÃOS</p><h2 id="ceramics-title">O tempo do barro<span className="lime-period">.</span></h2></div><p className="section-aside">Forma, textura e a beleza<br />de deixar as coisas acontecerem.</p></div>
-        <div className="ceramic-grid"><button className="ceramic-piece ceramic-main" onClick={() => setDetail({ eyebrow: 'CERÂMICA · GALERIA DE REFERÊNCIA', title: 'Formas para o cotidiano.', content: <><img className="detail-image" src="/images/ceramic-vases.jpg" alt="Vasos de referência em tons naturais" /><p>A galeria receberá as peças de Cecilia, com fotografias, materiais, dimensões e histórias do processo.</p><p className="detail-note">Fotografia ilustrativa de Chloe Bolton / Unsplash. Não representa obra de Cecilia.</p></> })}><img src="/images/ceramic-vases.jpg" alt="Imagem ilustrativa de vasos em tons naturais, não são peças de Cecilia" loading="lazy" /><div className="piece-caption"><div><span className="eyebrow">FORMAS & TEXTURAS</span><h3>O extraordinário do simples.</h3></div><span className="round-arrow"><Plus /></span></div></button>
-          <button className="ceramic-piece ceramic-process" onClick={() => setDetail({ eyebrow: 'CERÂMICA · PROCESSO', title: 'Entre as mãos e o tempo.', content: <><img className="detail-image" src="/images/pottery-hands.jpg" alt="Referência de trabalho em torno de cerâmica" /><p>Um lugar para compartilhar as etapas de criação: do primeiro contato com o barro à peça final.</p><p className="detail-note">Fotografia ilustrativa de Jonathan Cosens Photography / Unsplash.</p></> })}><div className="process-image"><img src="/images/pottery-hands.jpg" alt="Detalhe ilustrativo do processo de modelagem no torno" loading="lazy" /><span className="process-sticker handwritten">feito<br />devagar.</span></div><div className="piece-caption"><div><span className="eyebrow">POR DENTRO DO ATELIÊ</span><h3>Antes de ser peça, é processo.</h3></div><span className="round-arrow"><Plus /></span></div></button></div>
-        <div className="ceramics-bottom"><p>Uma outra maneira de contar histórias.</p><button className="text-link" onClick={() => channel('Instagram')}>Acompanhe no Instagram <ArrowUpRight size={20} /></button></div><p className="demo-note">Galeria ilustrativa. As fotografias serão substituídas pelas peças e pelo ateliê de Cecilia.</p>
-      </section>
+      <Projects />
 
       <section className="about-section" id="sobre" aria-labelledby="about-title">
         <div className="wrap about-grid">
           <div className="about-art">
-            <p className="eyebrow">MUITAS FORMAS DE SER</p>
+            
             <img className="about-photo" src="/images/cecilia-caneca.png" alt="Cecilia Vetchi segurando uma caneca de cerâmica, com um livro equilibrado sobre a cabeça" loading="lazy" width="1023" height="1537" />
+            <p className="handwritten about-photo-note">muitas formas de ser</p>
           </div>
           <div className="about-copy">
-            <p className="eyebrow">PRAZER, CECILIA</p>
+            <p className="eyebrow">PRAZER, CECILIA :)</p>
             <h2 id="about-title"><span className="about-highlight">A curiosidade é o fio que une.</span></h2>
-            <p>Desde que me entendo por gente, sou curiosa. Sempre quis saber o porquê de as coisas serem do jeito que são — nunca me conformei com um simples "porque sim". Gosto de ir além do raso, mergulhar fundo nos assuntos e ficar submersa até entender a essência.</p>
+            <p>Desde que me entendo por gente, sou curiosa. Sempre quis saber o porquê de as coisas serem do jeito que são, nunca me conformei com um simples "porque sim". Gosto de ir além do raso, mergulhar fundo nos assuntos e ficar submersa até entender a essência.</p>
             <button className="text-link" onClick={() => setDetail({
               eyebrow: 'SOBRE MIM', title: 'Uma trajetória, muitas formas de ser.',
               content: <>
                 <p>Entender o mundo é fundamental para mim, mas esse processo nunca acontece só de fora para dentro. Sinto a necessidade de me entender profundamente desde muito nova. Por isso, desde que aprendi a escrever, estou sempre rabiscando palavras e carregando um caderno para onde quer que eu vá.</p>
-                <p>Falar, ouvir com atenção e escrever fazem parte de quem sou. Reuni tudo isso na escolha de cursar Jornalismo, uma decisão que ampliou meu repertório e transformou a minha forma de enxergar a sociedade. Aprendi que o recorte que damos a cada assunto é o coração da história que queremos contar.</p>
-                <p>Hoje, trago essa escuta e olhar atento para projetos com propósito. Sou diretora criativa do RECONTAR.LAB, projeto de pesquisa independente em parceria com a planejadora financeira Shel Nascimento (@shellnascimento), no qual investigamos o que significa segurança financeira para as mulheres no Brasil. Sou também coautora do livro-reportagem Vozes do Silêncio (2022) e criadora da newsletter Clube Insano no Substack.</p>
-                <p>Seja em ensaios confessionais, investigações jornalísticas ou projetos criativos, o meu olhar atento está sempre presente.</p>
+                <p>Falar, ouvir com atenção e escrever fazem parte de quem sou. Reuni tudo isso na escolha de cursar Jornalismo, uma decisão que ampliou meu repertório e transformou a minha forma ver o mundo. Aprendi que o recorte que damos a cada assunto é o coração da história que queremos contar.</p>
+                <p>Hoje, trago essa escuta e olhar atento para projetos com propósito. Sou diretora criativa do RECONTAR.LAB, projeto de pesquisa independente em parceria com a planejadora financeira Shel Nascimento, no qual investigamos o que significa segurança financeira para as mulheres no Brasil. Sou também coautora do livro-reportagem Vozes do Silêncio (2022) e criadora da newsletter Clube Insano no Substack.</p>
+                <p>Seja em ensaios, investigações jornalísticas ou projetos criativos, o meu olhar atento está sempre presente.</p>
                 <p className="bio-question">Afinal, que história você quer contar?</p>
                 <a className="text-link" href="#colabs" onClick={() => setDetail(null)}>Vamos conversar.</a>
               </>,
