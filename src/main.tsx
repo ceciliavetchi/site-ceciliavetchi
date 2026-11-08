@@ -58,7 +58,7 @@ function App() {
           <a className="contact-link" href="mailto:cecilia.vetchi@gmail.com"><Mail aria-hidden="true" /><span><span className="contact-link-label">Por e-mail</span><strong>cecilia.vetchi@gmail.com</strong></span><ArrowUpRight className="contact-link-arrow" aria-hidden="true" /></a>
           <a className="contact-link" href="https://ig.me/m/cecilia.vetchi" target="_blank" rel="noopener noreferrer"><Camera aria-hidden="true" /><span><span className="contact-link-label">No direct do Instagram</span><strong>@cecilia.vetchi</strong></span><ArrowUpRight className="contact-link-arrow" aria-hidden="true" /></a>
         </div>
-        <p className="contact-outro">Vai ser bom conhecer sua ideia.</p>
+        <p className="contact-outro">Vou adorar saber :)</p>
       </>,
     });
   }
