@@ -8,10 +8,9 @@ import './hero.css';
 import './writing.css';
 import './about.css';
 import './refinements.css';
-import { ContactForm } from './contact-form';
 import { Projects } from './projects';
 
-type Detail = { kind?: 'contact'; eyebrow: string; title: string; content: ReactNode };
+type Detail = { eyebrow: string; title: string; content: ReactNode };
 const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projetos', 'projetos']];
 
 function App() {
@@ -44,10 +43,6 @@ function App() {
     setDetail({ eyebrow: 'CONEXÕES · PRÉVIA DO LAYOUT', title: `${name}, por aqui também.`, content: <><p>Este espaço está reservado para o canal oficial de Cecilia no {name}. O endereço será adicionado quando for confirmado.</p><p className="detail-note">Esta é uma demonstração visual. Não há integração ativa nem coleta de dados.</p></> });
   }
 
-  function contact() {
-    setMenuOpen(false);
-    setDetail({ kind: 'contact', eyebrow: 'BORA CONVERSAR?', title: 'Que história vamos contar?', content: <div className="contact-grid"><div className="contact-info"><a href="mailto:cecilia.vetchi@gmail.com">cecilia.vetchi@gmail.com</a></div><ContactForm /></div> });
-  }
 
   return <>
     <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -56,7 +51,7 @@ function App() {
       <nav id="mobile-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Navegação principal">
         {nav.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
       </nav>
-      <button className="contact-nav header-contact" onClick={contact}>Vamos conversar <ArrowUpRight size={16} /></button>
+      <a className="contact-nav header-contact" href="mailto:cecilia.vetchi@gmail.com" onClick={() => setMenuOpen(false)}>Vamos conversar <ArrowUpRight size={16} /></a>
       <button className="menu-toggle" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
     </header>
 
@@ -121,7 +116,7 @@ function App() {
                 <p>Hoje, trago essa escuta e olhar atento para projetos com propósito. Sou diretora criativa do RECONTAR.LAB, projeto de pesquisa independente em parceria com a planejadora financeira Shel Nascimento, no qual investigamos o que significa segurança financeira para as mulheres no Brasil. Sou também coautora do livro-reportagem Vozes do Silêncio (2022) e criadora da newsletter Clube Insano no Substack.</p>
                 <p>Seja em ensaios, investigações jornalísticas ou projetos criativos, o meu olhar atento está sempre presente.</p>
                 <p className="bio-question">Afinal, que história você quer contar?</p>
-                <a className="text-link" href="#colabs" onClick={() => setDetail(null)}>Vamos conversar.</a>
+                <a className="text-link" href="mailto:cecilia.vetchi@gmail.com" onClick={() => setDetail(null)}>Vamos conversar.</a>
               </>,
             })}>Mais sobre mim <ArrowUpRight size={20} /></button>
           </div>
@@ -130,13 +125,13 @@ function App() {
 
       <section className="section wrap connections" aria-labelledby="connections-title"><div className="section-top"><div><p className="eyebrow">04 / A CONVERSA CONTINUA</p><h2 id="connections-title">Por outros cantos<span className="lime-period">.</span></h2></div><p className="section-aside">Textos, bastidores, conversas.<br />Escolha seu jeito de acompanhar.</p></div><div className="channels-grid">{[{name:'Substack',icon:BookOpen,text:'Para ler com calma.'},{name:'Instagram',icon:Camera,text:'O cotidiano em imagens.'},{name:'TikTok',icon:Play,text:'Ideias em movimento.'},{name:'Spotify',icon:Headphones,text:'Conversas para levar junto.'}].map(({name,icon:Icon,text}) => <button className="channel-card" key={name} onClick={() => channel(name)}><div><Icon size={24} strokeWidth={1.5}/><ArrowUpRight size={20}/></div><h3>{name}</h3><p>{text}</p></button>)}</div></section>
 
-      <section className="collab-section wrap" id="colabs" aria-labelledby="collab-title"><div><p className="eyebrow">05 / VAMOS CONVERSAR</p><h2 id="collab-title">Vamos criar<br /><span className="handwritten">algo juntas?</span></h2><p>Histórias, conteúdos e projetos que fazem sentido.<br />O próximo encontro pode começar aqui.</p></div><button className="collab-cta" onClick={contact} aria-label="Conversar sobre uma colaboração"><ArrowUpRight strokeWidth={1} /></button></section>
+      <section className="collab-section wrap" id="colabs" aria-labelledby="collab-title"><div><p className="eyebrow">05 / VAMOS CONVERSAR</p><h2 id="collab-title">Vamos criar<br /><span className="handwritten">algo juntas?</span></h2><p>Histórias, conteúdos e projetos que fazem sentido.<br />O próximo encontro pode começar aqui.</p></div><a className="collab-cta" href="mailto:cecilia.vetchi@gmail.com" aria-label="Conversar sobre uma colaboração"><ArrowUpRight strokeWidth={1} /></a></section>
     </main>
 
     <footer className="wrap site-footer"><div><a className="wordmark" href="#">cecilia vetchi<span>.</span></a><p>conto historias pra entender o mundo</p></div><div className="footer-links">{Object.keys(channels).map(name => <button key={name} onClick={() => channel(name)}>{name} <ArrowUpRight size={13}/></button>)}</div><div className="footer-bottom"><span>© {new Date().getFullYear()} Cecilia Vetchi</span><div className="creator-credit"><span>Criado por</span><span className="creator-brand">maju ros<span aria-hidden="true">.</span></span></div><a href="#">Voltar ao início ↑</a></div></footer>
     <div className="preview-badge"><Check size={13}/><span>Prévia de design · conteúdo ilustrativo</span></div>
 
-    <dialog ref={dialog} className={detail?.kind === 'contact' ? 'detail-dialog contact-dialog' : 'detail-dialog'} onCancel={() => setDetail(null)} onClick={event => { if(event.target === event.currentTarget) setDetail(null); }} aria-labelledby="detail-title"><div className="detail-inner"><button ref={closeButton} className="dialog-close" onClick={() => setDetail(null)} aria-label="Fechar"><X /></button>{detail && <><p className="eyebrow">{detail.eyebrow}</p><h2 id="detail-title">{detail.title}</h2><div className="detail-body">{detail.content}</div></>}</div></dialog>
+    <dialog ref={dialog} className="detail-dialog" onCancel={() => setDetail(null)} onClick={event => { if(event.target === event.currentTarget) setDetail(null); }} aria-labelledby="detail-title"><div className="detail-inner"><button ref={closeButton} className="dialog-close" onClick={() => setDetail(null)} aria-label="Fechar"><X /></button>{detail && <><p className="eyebrow">{detail.eyebrow}</p><h2 id="detail-title">{detail.title}</h2><div className="detail-body">{detail.content}</div></>}</div></dialog>
   </>;
 }
 

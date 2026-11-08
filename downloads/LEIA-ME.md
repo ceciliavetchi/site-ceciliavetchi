@@ -1,7 +1,10 @@
-# Downloads da versão aprovada
+# Downloads atuais
 
-- `cecilia-site-netlify.zip`: extraia e envie a pasta `dist` para a área de deploy manual do seu site existente no Netlify.
-- `cecilia-codigo-atualizado.zip`: código-fonte editável completo, sem dependências instaladas.
-- `previa-desktop.png`: captura real da abertura do site.
+- cecilia-SITE-PRONTO.zip: pasta dist pronta para hospedar em Cloudflare Pages ou outra hospedagem estática.
+- cecilia-SITE-COMPLETO-PREVIEW-LOCAL.zip: código-fonte e dist para visualizar localmente sem publicar.
+- cecilia-codigo-atualizado.zip: somente código-fonte e arquivos de desenvolvimento.
+- COMO-VISUALIZAR-LOCALMENTE.txt: instruções da prévia local.
+- PUBLICAR-NO-CLOUDFLARE.md: instruções de publicação no Pages.
 
-Para baixar um arquivo no GitHub, abra-o e clique no ícone de download ou em **Download raw**. Fazer o download ou enviar estes arquivos ao GitHub não publica o site no Netlify.
+No GitHub, abra o arquivo desejado e clique em Download raw.
+O contato é feito por links de e-mail para cecilia.vetchi@gmail.com; não há mais formulário.

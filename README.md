@@ -18,7 +18,7 @@ npm run build
 npm run preview
 ```
 
-A pasta `dist` contém o site estático. Para atualizar o Netlify, envie o conteúdo dessa pasta para o site existente. Gerar o build não publica o site.
+A pasta `dist` contém o site estático. Para atualizar a hospedagem, envie o conteúdo dessa pasta ao seu projeto estático existente. Gerar o build não publica o site.
 
 ## Identidade e conteúdo
 
@@ -28,8 +28,10 @@ A fonte ES Build TRIAL Bold foi fornecida pela usuária para o teste visual. O a
 
 A foto e o símbolo originais enviados ao GitHub estão incorporados em `public/images`.
 
-## Contato pelo Netlify Forms
+## Contato por e-mail
 
-O botão Vamos conversar abre o formulário com nome, e-mail, WhatsApp e mensagem. A declaração estática em `index.html` permite a detecção do formulário React no deploy. O envio usa POST codificado para o Netlify; não há credenciais no código.
+Os links Vamos conversar, na navegação, na biografia e no bloco final, abrem `mailto:cecilia.vetchi@gmail.com`. O visitante usa seu aplicativo de e-mail para enviar a mensagem. Não há formulário ou serviço de envio no site.
 
-Após publicar, habilite a detecção de formulários no painel do site, se necessário, e configure as notificações do formulário `contato` para `cecilia.vetchi@gmail.com`. Consulte `downloads/CONFIGURAR-FORMULARIO.md`. A entrega real de e-mails depende dessa configuração no Netlify; os testes locais usam respostas simuladas.
+## Publicação estática gratuita
+
+O conteúdo da pasta `dist` pode ser hospedado no Cloudflare Pages por upload direto. O site não depende do Netlify. Consulte `downloads/PUBLICAR-NO-CLOUDFLARE.md`.
