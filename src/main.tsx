@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ArrowUpRight, ArrowDown, Asterisk, Menu, X, Mail, Headphones, Camera, Play, BookOpen, Check } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { articleSelections, channels } from './content';
+import { articles, channels } from './content';
 import './styles.css';
 import './hero.css';
 import './writing.css';
@@ -16,7 +16,6 @@ const nav = [['Sobre mim', 'sobre'], ['Clube Insano', 'clube-insano'], ['Projeto
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [filter, setFilter] = useState<keyof typeof articleSelections>('Todos');
   const [detail, setDetail] = useState<Detail | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
@@ -101,9 +100,9 @@ function App() {
 
       <section className="section wrap writing" id="clube-insano" aria-labelledby="writing-title">
         <div className="section-top"><div><p className="eyebrow">01 / ESCRITA</p><h2 id="writing-title">CLUBE INSANO<span className="lime-period">.</span></h2></div><a className="text-link" href={channels.Substack!} target="_blank" rel="noopener noreferrer">Meu Substack <ArrowUpRight size={20} /></a></div>
-        <div className="writing-toolbar"><p>minha newsletter no substack onde compartilho meu jeito de ver o mundo.</p><div className="filters" aria-label="Filtrar artigos">{(Object.keys(articleSelections) as (keyof typeof articleSelections)[]).map(label => <button key={label} aria-pressed={filter === label} className={filter === label ? 'filter active' : 'filter'} onClick={() => setFilter(label)}>{label}</button>)}</div></div>
-        <div className="articles-grid" aria-live="polite">
-          {articleSelections[filter].map((article, index) => <article className="article" key={article.id} data-category={filter.toLowerCase()}>
+        <div className="writing-toolbar"><p>minha newsletter no substack onde compartilho meu jeito de ver o mundo.</p></div>
+        <div className="articles-grid">
+          {articles.map((article, index) => <article className="article" key={article.id}>
             <a className="article-open" href={article.href} target="_blank" rel="noopener noreferrer">
               <div className={`article-cover ${index % 2 === 0 ? 'paper' : 'acid'}`}>
                 <span className="cover-label">{article.format}</span><span className="handwritten cover-writing">{article.cover}</span><Asterisk className="cover-star" strokeWidth={1.4} aria-hidden="true" />
