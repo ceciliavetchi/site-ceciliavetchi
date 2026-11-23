@@ -38,7 +38,7 @@ const projects = [
     image: '/images/clube-insano-logo.png',
     alt: 'Logo Clube Insano em letras verde-lima',
     paragraphs: [
-      'A newsletter em que prometo sinceridade e onde compartilho as vozes (insanas) da minha cabeça. A plataforma funciona como um laboratório de escrita para mim e ponto de encontro com as pessoas. O meu Clube Insano combina crônicas, ensaios, textos analíticos e reflexivos sobre processo criativo, política, dinheiro e feminismo. Sempre',
+      'A newsletter em que prometo sinceridade e onde compartilho as vozes (insanas) da minha cabeça. A plataforma funciona como um laboratório de escrita para mim e ponto de encontro com as pessoas. O meu Clube Insano combina crônicas, ensaios, textos analíticos e reflexivos sobre processo criativo, política, dinheiro e feminismo.',
       'É o meu espaço na internet, totalmente sem filtro, para compartilhar os nossos dilemas, discutir autonomia e criar pontes com os leitores por meio de reflexões profundas sobre o cotidiano.',
     ],
     link: { label: 'Assinar o Clube Insano', href: 'https://ceciliasantos.substack.com/' },
